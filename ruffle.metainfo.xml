@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>rs.ruffle.desktop</id>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>Apache-2.0 OR MIT</project_license>
+    <name>Ruffle</name>
+    <summary>A Flash Player emulator written in Rust</summary>
+    <description>
+        <p>
+            Ruffle is an Adobe Flash Player emulator written in the Rust programming language.
+            Ruffle targets both the desktop and the web using WebAssembly.
+        </p>
+    </description>
+    <categories>
+        <category>Game</category>
+        <category>Emulator</category>
+    </categories>
+    <url type="homepage">https://ruffle.rs/</url>
+    <url type="bugtracker">https://github.com/ruffle-rs/ruffle/issues</url>
+    <url type="vcs-browser">https://github.com/ruffle-rs/ruffle</url>
+    <url type="contribute">https://github.com/ruffle-rs/ruffle/blob/master/CONTRIBUTING.md</url>
+    <url type="donation">https://github.com/sponsors/ruffle-rs</url>
+    <url type="help">https://github.com/ruffle-rs/ruffle/wiki</url>
+    <url type="faq">https://github.com/ruffle-rs/ruffle/wiki/Frequently-Asked-Questions-For-Users</url>
+    <url type="translate">https://crowdin.com/project/ruffle</url>
+    <content_rating type="oars-1.1" />
+    <provides>
+        <binary>ruffle_desktop</binary>
+    </provides>
+    <screenshots>
+        <screenshot type="default"><image>https://ruffle.rs/2024-01-14-2023-in-review/ui-open-advanced.png</image></screenshot>
+        <screenshot><image>https://ruffle.rs/2024-01-14-2023-in-review/material_sniper.png</image></screenshot>
+        <screenshot><video>https://ruffle.rs/2024-01-14-2023-in-review/transformice.mp4</video></screenshot>
+    </screenshots>
+</component>

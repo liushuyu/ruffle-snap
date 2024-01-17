@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=ruffle_desktop
+Icon=${SNAP}/meta/gui/ruffle.png
+Type=Application
+
+Name=Ruffle
+Comment=A Flash Player emulator written in Rust
+Categories=Graphics;Game;
+MimeType=application/x-shockwave-flash

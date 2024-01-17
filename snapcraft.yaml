@@ -1,0 +1,72 @@
+name: ruffle
+base: core22
+version: 'nightly-2024-01-17'
+adopt-info: ruffle
+summary: A Flash Player emulator written in Rust
+description: |
+  Ruffle is an Adobe Flash Player emulator written in the Rust programming language.
+  Ruffle targets both the desktop and the web using WebAssembly.
+
+grade: devel
+confinement: strict
+
+parts:
+  ruffle:
+    plugin: rust
+    rust-use-global-lto: 1
+    rust-path: ["desktop"]
+    rust-features: ["jpegxr"]
+    source: https://github.com/ruffle-rs/ruffle.git
+    build-packages:
+      - libasound2-dev
+      - libssl-dev
+      - default-jre-headless
+      - cmake
+      - g++
+      - libclang-dev
+      - zlib1g-dev
+      - pkg-config
+    stage-packages:
+      - libvulkan1
+      - mesa-vulkan-drivers
+    override-pull: |
+      craftctl default
+      craftctl set version="$(git describe --tags)"
+  assets:
+    plugin: dump
+    source: .
+    override-build: |
+      install -Dvm644 ruffle.metainfo.xml -t $SNAPCRAFT_PART_INSTALL/usr/share/metainfo/
+
+layout:
+  /usr/share/vulkan:
+    symlink: $SNAP/usr/share/vulkan
+  "/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libvulkan_intel.so":
+    symlink: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libvulkan_intel.so
+  "/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libvulkan_radeon.so":
+    symlink: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libvulkan_radeon.so
+  "/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libvulkan_intel_hasvk.so":
+    symlink: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libvulkan_intel_hasvk.so
+  "/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libvulkan_lvp.so":
+    symlink: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libvulkan_lvp.so
+
+apps:
+  ruffle:
+    extensions: ["gnome"]
+    command: bin/ruffle_desktop
+    common-id: rs.ruffle.desktop
+    plugs:
+      - home
+      - network
+      - network-bind
+      - desktop
+      - desktop-legacy
+      - x11
+      - wayland
+      - audio-playback
+      - audio-record
+      - opengl
+      - screen-inhibit-control
+      - removable-media
+      - gsettings
+      - hardware-observe
