@@ -6,8 +6,10 @@ summary: A Flash Player emulator written in Rust
 description: |
   Ruffle is an Adobe Flash Player emulator written in the Rust programming language.
   Ruffle targets both the desktop and the web using WebAssembly.
+license: Apache-2.0 OR MIT
+icon: snap/gui/ruffle.png
 
-grade: devel
+grade: stable
 confinement: strict
 
 parts:
